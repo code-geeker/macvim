@@ -141,9 +141,22 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
+"let g:airline#extensions#gutentags#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 
  "let g:airline#extensions#tabline#enabled = 2
- "let g:airline#extensions#tabline#fnamemod = ':t'
  "let g:airline#extensions#tabline#buffer_min_count = 1
 
 " }}}
@@ -265,6 +278,7 @@ nnoremap <leader>l :NERDTreeTabsFind<CR>
 nmap <F6> :NERDTreeTabsToggle<CR>
 nmap <F7> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+let g:tagbar_phpctags_bin='~/.vim/phpctags'
 let g:NERDTreeMapActivateNode='<tab>'
 
 "autocmd vimenter * NERDTree
