@@ -1,0 +1,85 @@
+" Plugins here are part of the CORE Maximum Awesome setup
+" Do NOT add bundles to this list, as they might get removed when you upgrade
+" Maximum Awesome.
+" Please create ~/.vimrc.bundles.local and add any extra bundles you want there
+
+" Plug 'christoomey/vim-tmux-navigator'
+"Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'thinca/vim-unite-history'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/context_filetype.vim'
+Plug 'osyo-manga/unite-quickfix'
+Plug 'stephpy/vim-php-cs-fixer'
+
+Plug 'Shougo/vimshell.vim'
+
+Plug 'majutsushi/tagbar'
+Plug 'pangloss/vim-javascript'
+"Plug 'wookiehangover/jshint.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+"Plug 'jreybert/vimagit'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/matchit.zip'
+Plug 'itchyny/vim-cursorword'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+
+Plug 'bling/vim-airline'
+Plug 'mattn/emmet-vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+Plug 'Raimondi/delimitMate'
+Plug 'ap/vim-css-color'
+Plug 'gregsexton/MatchTag'
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'airblade/vim-rooter'
+Plug 'godlygeek/tabular'
+Plug 'jwalton512/vim-blade'
+
+Plug 'dracula/vim'
+"Plug '2072/PHP-Indenting-for-VIm'
+"Plug 'code-geeker/php-dict'
+
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mbbill/undotree'
+"Plug 'sjl/gundo.vim'
+Plug 'asins/vim-dict'
+"Plug 'iakio/smarty3.vim'
+Plug  'chrisgillis/vim-bootstrap3-snippets'
+
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'unblevable/quick-scope'
+
+Plug 'alvan/vim-php-manual'
+Plug 'StanAngeloff/php.vim'
+"Plug 'tomasr/molokai'
+"Plug 'modess/vim-phpcolors'
+
+"Plug 'kana/vim-operator-user'
+"Plug 'haya14busa/vim-operator-flashy'
+
+"Plug 'Yggdroot/indentLine'
+
+
+"Plug 'YankRing.vim'
+Plug 'rking/ag.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'vim-php/tagbar-phpctags.vim'
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'takac/vim-hardtime'

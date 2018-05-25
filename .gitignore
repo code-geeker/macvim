@@ -2,7 +2,7 @@
 /*
 !.gitignore
 !.vimrc
-!.vimrc.bundle
+!.vimrc.bundles
 !phpctags
 !autoload/
 !bundle/
