@@ -9,10 +9,15 @@
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+Plug 'Shougo/denite.nvim'
 Plug 'thinca/vim-unite-history'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/context_filetype.vim'
 Plug 'osyo-manga/unite-quickfix'
+
+
+
 Plug 'stephpy/vim-php-cs-fixer'
 
 Plug 'Shougo/vimshell.vim'
@@ -23,12 +28,19 @@ Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
-"Plug 'jreybert/vimagit'
+
+"Plug 'tpope/vim-fugitive'
+"Plug 'junegunn/gv.vim'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
+
+Plug 'Lokaltog/vim-easymotion'
 Plug 'itchyny/vim-cursorword'
+Plug 'lfv89/vim-interestingwords'
+Plug 'unblevable/quick-scope'
+
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 
@@ -51,7 +63,6 @@ Plug 'dracula/vim'
 "Plug '2072/PHP-Indenting-for-VIm'
 "Plug 'code-geeker/php-dict'
 
-Plug 'Lokaltog/vim-easymotion'
 Plug 'mbbill/undotree'
 "Plug 'sjl/gundo.vim'
 Plug 'asins/vim-dict'
@@ -59,7 +70,6 @@ Plug 'asins/vim-dict'
 Plug  'chrisgillis/vim-bootstrap3-snippets'
 
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'unblevable/quick-scope'
 
 Plug 'alvan/vim-php-manual'
 Plug 'StanAngeloff/php.vim'
@@ -74,6 +84,8 @@ Plug 'StanAngeloff/php.vim'
 
 "Plug 'YankRing.vim'
 Plug 'rking/ag.vim'
+"Plug 'rhysd/clever-f.vim'
+
 Plug 'dyng/ctrlsf.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
@@ -83,3 +95,4 @@ Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'takac/vim-hardtime'
+Plug '/usr/local/opt/fzf'

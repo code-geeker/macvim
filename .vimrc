@@ -22,7 +22,7 @@ call plug#end()
 
 "au BufWritePre * :set binary | set noeol
 "au BufWritePost * :set nobinary | set eol
-
+"set modifiable
 set guioptions-=r
 set guioptions-=L
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
@@ -48,7 +48,6 @@ set softtabstop=4                                           " insert mode tab an
 set tabstop=4                                             " actual tabs occupy 8 characters
 set shiftround                                          " Round indent to multiple of shiftwidth
 set autoindent
-
 
 if has("gui_macvim")
 
@@ -149,7 +148,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#close_symbol = '×'
 let g:airline#extensions#tabline#show_close_button = 0
@@ -161,7 +161,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " }}}
 
-set nowrap
+set wrap
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#
 
@@ -309,7 +309,7 @@ let g:hardtime_maxcount = 3
 
 " ==== gutentags settings ====
 " Exclude css, html, js files from generating tag files
-let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js',"build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 " Where to store tag files
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 " ==== End gutentags settings ====
@@ -419,6 +419,8 @@ let g:unite_source_rec_max_cache_files = 0
 let g:unite_prompt = '>>>'
 let g:unite_data_directory = $HOME.'/.vim/tmp/unite'
 
+let g:neomru#time_format = '%Y/%m/%d %H:%M:%S'
+
 call unite#filters#matcher_default#use(['matcher_context'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
@@ -433,14 +435,10 @@ let g:default_context = {
 
 call unite#custom#profile('default', 'context', default_context)
 
-"call unite#custom#source('line',
-    "\ 'matchers', 'matcher_fuzzy')
 call unite#custom#source('file_mru,file_rec,file_rec/async',
             \ 'ignore_pattern', join(['\.git/','\.DS_Store', 'tmp/', 'bundle/'], '\|'))
 
 let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-
-
 
 
 function! <SID>UniteSetup()
@@ -448,6 +446,7 @@ function! <SID>UniteSetup()
     nmap <buffer> <Esc> <plug>(unite_exit)
     imap <buffer> <Esc> <plug>(unite_exit)
     imap <buffer> <down>   <Plug>(unite_select_next_line)
+    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
     imap <buffer> <Up>   <Plug>(unite_select_previous_line)
 endfunction
 autocmd FileType unite call <SID>UniteSetup()
@@ -455,13 +454,16 @@ autocmd FileType unite call <SID>UniteSetup()
 nmap <space> [unite]
 nnoremap [unite] <nop>
 
-nnoremap <silent> [unite]f :<C-U>Unite -auto-resize -toggle -buffer-name=files file_rec/async<CR>
+nnoremap <silent> [unite]f :<C-U>Unite -path=~/Vagrant -auto-resize -toggle -buffer-name=files file_rec/async<CR>
+nnoremap <silent> [unite]c :<C-U>UniteWithCurrentDir -auto-resize -toggle -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]m :<C-U>Unite -auto-resize -toggle -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]b :<C-U>Unite -quick-match -auto-resize -buffer-name=buffers buffer<CR>
 nnoremap <silent> [unite]y :<C-u>Unite -auto-resize -buffer-name=yanks -quick-match history/yank<CR>
 nnoremap <silent> [unite]p :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
 nnoremap <silent> [unite]l :<C-u>Unite -silent -no-split -start-insert -auto-preview
             \ line<CR>
+
+nnoremap <silent> [unite]r  :<C-u>Unite -auto-resize -quick-match -buffer-name=register register<CR>
 
 let g:unite_source_menu_menus = {}
 " menu prefix key (for all Unite menus) {{{
@@ -519,61 +521,6 @@ let g:unite_source_menu_menus.registers.command_candidates = [
     \]
 nnoremap <silent>[menu]ml :Unite -silent -auto-resize -quick-match menu:registers<CR>
 " }}}
-
-let g:unite_source_menu_menus.git = {
-            \ 'description' : '            gestionar repositorios git
-            \                            ⌘ [espacio]g',
-            \}
-let g:unite_source_menu_menus.git.command_candidates = [
-            \['▷ Magit                                                        ⌘ ,gt',
-            \'exe "silent Magit"'],
-            \['▷ git status       (Fugitive)                                ⌘ ,gs',
-            \'Gstatus'],
-            \['▷ git diff         (Fugitive)                                ⌘ ,gd',
-            \'Gdiff'],
-            \['▷ git commit       (Fugitive)                                ⌘ ,gc',
-            \'Gcommit'],
-            \['▷ git log          (Fugitive)                                ⌘ ,gl',
-            \'exe "silent Glog | Unite quickfix"'],
-            \['▷ git blame        (Fugitive)                                ⌘ ,gb',
-            \'Gblame'],
-            \['▷ git stage        (Fugitive)                                ⌘ ,gw',
-            \'Gwrite'],
-            \['▷ git checkout     (Fugitive)                                ⌘ ,go',
-            \'Gread'],
-            \['▷ git rm           (Fugitive)                                ⌘ ,gr',
-            \'Gremove'],
-            \['▷ git mv           (Fugitive)                                ⌘ ,gm',
-            \'exe "Gmove " input("destino: ")'],
-            \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
-            \'Git! push'],
-            \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
-            \'Git! pull'],
-            \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
-            \'exe "Git! " input("comando git: ")'],
-            \['▷ git cd           (Fugitive)',
-            \'Gcd'],
-            \]
-nnoremap <silent> [menu]mg :Unite -silent -quick-match menu:git<CR>
-
-" buffers, tabs & windows menu {{{
-let g:unite_source_menu_menus.navigation = {
-    \ 'description' : '     navigate by buffers, tabs & windows
-        \                   ⌘ [space]b',
-    \}
-let g:unite_source_menu_menus.navigation.command_candidates = [
-    \['▷ tabs                                                       ⌘ ,B',
-        \'Unite tab'],
-    \['▷ new vertical window                                        ⌘ ,v',
-        \'vsplit'],
-    \['▷ new horizontal window                                      ⌘ ,h',
-        \'split'],
-    \['▷ delete buffer                                              ⌘ ,K',
-        \'bd'],
-    \]
-nnoremap <silent>[menu]mn :<C-u>Unite -silent -auto-resize -quick-match menu:navigation<CR>
-" }}}
-
 
 " neomru {{{
 
@@ -664,6 +611,7 @@ endif
 
 
 
+"highlight VertSplit    cterm=NONE ctermfg=233   ctermbg=233
 
 
 function! s:config_fuzzyall(...) abort
@@ -732,3 +680,7 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 nmap <C-b>n  :bnext<CR>;
 nmap <C-b>p  :bprev<CR>;
+
+"ctags
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
