@@ -130,7 +130,7 @@ if (&t_Co == 256 || has('gui_running'))
   endif
 endif
 set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types:h15
-
+"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h15
 
 " Airline {{{
 
@@ -576,6 +576,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 "vim-devicons
 " NERDTress File highlighting
+let g:webdevicons_enable = 1
+
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -585,6 +587,9 @@ endfunction
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdeviconsunicodeglyphdoublewidth = 2
+
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
 
 autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#282A36')
 autocmd VimEnter * call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#282A36')
@@ -684,3 +689,16 @@ nmap <C-b>p  :bprev<CR>;
 "ctags
 nnoremap <c-]> g<c-]>
 vnoremap <c-]> g<c-]>
+
+
+
+if !exists("g:potion_command")
+    let g:potion_command = "/Applications/PhpStorm.app/Contents/bin/format.sh -s ~/.vim/zgia.xml"
+endif
+
+function! PotionCompileAndRunFile()
+    silent !clear
+    execute "!" . g:potion_command . " %:p"
+endfunction
+
+nnoremap <silent> <leader>f :call PotionCompileAndRunFile()<cr>

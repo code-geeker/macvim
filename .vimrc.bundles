@@ -10,7 +10,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/denite.nvim'
 Plug 'thinca/vim-unite-history'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/context_filetype.vim'
@@ -29,7 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
 
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 "Plug 'junegunn/gv.vim'
 
 Plug 'airblade/vim-gitgutter'
@@ -40,6 +40,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 Plug 'unblevable/quick-scope'
+Plug 'kshenoy/vim-signature'
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
